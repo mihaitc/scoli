@@ -5,13 +5,7 @@
   z-index: 0;
 }
 
-#info {
-  bottom: 1%;
-  left: 1%;
-  position: absolute;
-  height: 10%;
-  width: 300px;
+.info-control {
   background: white;
-  z-index: 10;
-  padding: 1em;
+  padding: 0.3em;
 }
