@@ -1,0 +1,17 @@
+#map {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+#info {
+  bottom: 1%;
+  left: 1%;
+  position: absolute;
+  height: 10%;
+  width: 300px;
+  background: white;
+  z-index: 10;
+  padding: 1em;
+}
