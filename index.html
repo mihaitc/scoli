@@ -7,79 +7,15 @@
 <link rel="stylesheet" href="./static/css/leaflet.css" />
 <link rel="stylesheet" href="./static/css/scoli.css" />
 <link rel="stylesheet" href="./static/css/bootstrap.min.css" />
+
+<script src="./static/js/helpers.js"></script>
+<script src="./static/js/placenames.js"></script>
 <script src="./static/js/leaflet.js"></script>
+<script src="./static/js/leaflet.custom_controls.js"></script>
+<script src="./static/js/leaflet.groupedlayercontrol.js"></script>
 <script src="./static/js/leaflet_providers.js"></script>
+<script src="./static/js/engine.js"></script>
 <script src="./data/bucuresti.js"></script>
-
-<script type="text/javascript">
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }
-
-  function initialize() {
-    var map_latitude = 44.435599;
-    var map_longitude = 26.10194;
-    var map_zoom = 13;
-   	var streets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWloYWl0YyIsImEiOiJQdlZ3Vk1jIn0.tifaZEFZJjYcbkOBRooqGw', {
-  		maxZoom: 18,
-  		id: 'mapbox.streets'
-  	});
-  	var here_hybrid = L.tileLayer.provider('HERE.hybridDay', {
-        app_id: 'e8cITM4ZmLZY5vCISfGG',
-        app_code: 'eWDxP5uk72zORpQjf8GANw'
-    });
-    map = L.map('map', {
-        center: [map_latitude, map_longitude],
-        zoom: map_zoom,
-        layers: [streets]
-    });
-
-    var marker_options = {
-        weight: 1,
-        opacity: 1
-    };
-
-    var InfoControl = L.Control.extend({
-        options: {
-            position: 'bottomleft'
-        },
-
-        onAdd: function (map) {
-            // create the control container with a particular class name
-            var container = L.DomUtil.create('div', 'info-control');
-            container.innerHTML += '<b>Școlile din București după media notelor</b><br />';
-            container.innerHTML += 'Media pe oraș: ' + json['average'] + '<br />';
-            container.innerHTML += json['number_schools'] + ' școli și ' +  numberWithCommas(json['number_pupils']) + ' elevi';
-
-            L.DomEvent.disableClickPropagation(container);
-            return container;
-        }
-    });
-    map.addControl(new InfoControl());
-
-    var base_maps = {"Hibrid": here_hybrid, "Strazi": streets, }
-    L.control.layers(base_maps).addTo(map);
-
-    var schools = json['schools'];
-    for(var i=0; i < schools.length; i++){
-      if(schools[i].below_average){
-        marker_options.fillColor = "red";
-        marker_options.color = "red";
-      }
-      else {
-        marker_options.fillColor = "green";
-        marker_options.color = "green";
-      }
-      marker_options.radius =  schools[i].radius;
-      marker_options.fillOpacity =  schools[i].fill;
-      var marker = L.circleMarker(L.latLng(schools[i].latitude, schools[i].longitude), marker_options).addTo(map);
-      var text = schools[i].school_name + "<br />Nota medie: " + schools[i].average_grade;
-      text += "<br/ >Numar elevi: " + schools[i].number_pupils;
-      marker.bindPopup(text);
-    }
-  }
-</script>
-
 
 </head>
 <body onload="initialize();">
