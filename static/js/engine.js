@@ -3,9 +3,26 @@ function numberWithCommas(x) {
 }
 
 function initialize() {
-  var map_latitude = json['pn_geo']['lt'];
-  var map_longitude = json['pn_geo']['lg'];
-  var map_zoom = json['pn_geo']['z'];
+  var hash_values = read_hash();
+  if(hash_values.hasOwnProperty('lt') && !isNaN(hash_values.lt)){
+    var map_latitude = hash_values.lt;
+  }  
+  else {
+    var map_latitude = json['pn_geo']['lt'];
+  }
+  if(hash_values.hasOwnProperty('lg') && !isNaN(hash_values.lg)){
+    var map_longitude = hash_values.lg;
+  }  
+  else {
+    var map_longitude = json['pn_geo']['lg'];
+  }
+  if(hash_values.hasOwnProperty('z') && !isNaN(hash_values.z)){
+    map_zoom = hash_values.z;
+  }  
+  else{
+    var map_zoom = json['pn_geo']['z'];
+  }  
+  
  	var streets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWloYWl0YyIsImEiOiJQdlZ3Vk1jIn0.tifaZEFZJjYcbkOBRooqGw', {
 		maxZoom: 18,
 		id: 'mapbox.streets'
@@ -26,6 +43,18 @@ function initialize() {
       zoom: map_zoom,
       layers: [streets, group_data.all_grades]
   });
+  
+  map.on('overlayadd', function(e) {
+    if(e.name == 'Sub Medie'){
+      update_avg('b');
+    }
+    else if(e.name == 'Peste Medie'){
+      update_avg('a');      
+    }
+    else if(e.name == 'Toate'){
+      update_avg('');            
+    }    
+  });  
 
   var marker_options = {
       weight: 1,
@@ -91,4 +120,7 @@ function initialize() {
       L.circleMarker(L.latLng(schools[i].lt, schools[i].lg), marker_options).bindPopup(text).addTo(group_data.above_average_grades);
     }
   };
+  map.on('load moveend', function(event){
+    map_move_end(map);
+  });  
 }
