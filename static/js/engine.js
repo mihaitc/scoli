@@ -64,6 +64,9 @@ function initialize() {
   };
   var base_maps = {"Hibrid": here_hybrid, "Strazi": streets, }
   L.control.groupedLayers(base_maps, groupedOverlays, group_options).addTo(map);
+  var placename_selector = L.control.placenameSelect({position: 'bottomright'});
+  placename_selector.addTo(map);  
+  placename_selector.on('change', function(e){});  
 
   var schools = json['schools'];
   for(var i=0; i < schools.length; i++){
