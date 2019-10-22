@@ -104,6 +104,11 @@ function initialize() {
   var placename_selector = L.control.placenameSelect({position: 'bottomright'});
   placename_selector.addTo(map);  
   placename_selector.on('change', function(e){});  
+  if(json['school_type'] != 'oraș'){
+  var school_type_selector = L.control.schoolTypeSelect({position: 'bottomright'});
+    school_type_selector.addTo(map);  
+    school_type_selector.on('change', function(e){}); 
+  }  
 
   var schools = json['schools'];
   for(var i=0; i < schools.length; i++){
