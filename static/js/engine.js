@@ -36,12 +36,20 @@ function initialize() {
     above_average_grades: new L.LayerGroup(),
     below_average_grades: new L.LayerGroup(),
   };
-
+  var selected_grades = group_data.all_grades; 
+  if(hash_values.hasOwnProperty('av')){
+    if(hash_values['av'] == 'a'){
+      selected_grades = group_data.above_average_grades;
+    }
+    else if(hash_values['av'] == 'b'){
+      selected_grades = group_data.below_average_grades;
+    }    
+  };
 
   map = L.map('map', {
       center: [map_latitude, map_longitude],
       zoom: map_zoom,
-      layers: [streets, group_data.all_grades]
+      layers: [streets, selected_grades]
   });
   
   map.on('overlayadd', function(e) {
@@ -109,7 +117,7 @@ function initialize() {
     }
     marker_options.radius =  schools[i].r;
     marker_options.fillOpacity =  schools[i].f;
-    var marker = L.circleMarker(L.latLng(schools[i].lt, schools[i].lg), marker_options).addTo(map);
+    var marker = L.circleMarker(L.latLng(schools[i].lt, schools[i].lg), marker_options);
     var text = schools[i].sn + "<br />Nota medie: " + schools[i].ag;
     text += "<br/ >Numar elevi: " + schools[i].n;
     marker.bindPopup(text).addTo(group_data.all_grades);
