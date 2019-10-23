@@ -8,6 +8,9 @@ L.Control.SchoolTypeSelect = L.Control.extend({
        new_path_split.push(path_split[i]);
      }
    };
+   if(new_path_split.length == 1){
+     new_path_split.push('romania');
+   }
    if(new_path_split){
      var place_name = new_path_split[new_path_split.length-1];
      var place_name_split = place_name.split('_');
@@ -60,6 +63,9 @@ L.Control.SchoolTypeSelect = L.Control.extend({
         new_path_split.push(path_split[i]);
       }
     };
+    if(new_path_split.length == 1){
+      new_path_split.push('romania');
+    }    
     if(new_path_split){
       var place_name = new_path_split[new_path_split.length-1];
       var place_name_split = place_name.split('_');
@@ -82,7 +88,7 @@ L.Control.SchoolTypeSelect = L.Control.extend({
       else {
         new_place_name = old_place_name;
       }
-      window.location.href = '/' + new_path_split.slice(0, -1).join('/') + '/' + new_place_name + '/';
+      window.location.pathname = '/' + new_path_split.slice(0, -1).join('/') + '/' + new_place_name + '/';
     }
   }
 });
@@ -103,6 +109,9 @@ L.Control.PlacenameSelect = L.Control.extend({
        new_path_split.push(path_split[i]);
      }
    };
+   if(new_path_split.length == 1){
+     new_path_split.push('romania');
+   }   
    if(new_path_split){
      var place_name = new_path_split[new_path_split.length-1];
      var place_name_split = place_name.split('_');
@@ -170,8 +179,11 @@ L.Control.PlacenameSelect = L.Control.extend({
         new_path_split.push(path_split[i]);
       }
     };
+    if(new_path_split.length == 1){
+      new_path_split.push('romania');
+    }    
     var new_path = '/' + new_path_split.slice(0, -1).join('/') + '/' + selected_placename + '/';
-    window.location.href = new_path;
+    window.location.pathname = new_path;
   }
 });
 
