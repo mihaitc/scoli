@@ -9,7 +9,7 @@ L.Control.SchoolTypeSelect = L.Control.extend({
      }
    };
    if(new_path_split.length == 1){
-     new_path_split.push('romania');
+     new_path_split.push('bucuresti');
    }
    if(new_path_split){
      var place_name = new_path_split[new_path_split.length-1];
@@ -21,6 +21,7 @@ L.Control.SchoolTypeSelect = L.Control.extend({
        }
      }
    }
+   // console.log(place_name);
    var school_type_choices = ['urban', 'rural'];
    var school_type_dict = {};
    for(var i=0; i < school_type_choices.length; i++){
@@ -64,7 +65,7 @@ L.Control.SchoolTypeSelect = L.Control.extend({
       }
     };
     if(new_path_split.length == 1){
-      new_path_split.push('romania');
+      new_path_split.push('bucuresti');
     }    
     if(new_path_split){
       var place_name = new_path_split[new_path_split.length-1];
@@ -110,7 +111,7 @@ L.Control.PlacenameSelect = L.Control.extend({
      }
    };
    if(new_path_split.length == 1){
-     new_path_split.push('romania');
+     new_path_split.push('bucuresti');
    }   
    if(new_path_split){
      var place_name = new_path_split[new_path_split.length-1];
@@ -180,7 +181,7 @@ L.Control.PlacenameSelect = L.Control.extend({
       }
     };
     if(new_path_split.length == 1){
-      new_path_split.push('romania');
+      new_path_split.push('bucuresti');
     }    
     var new_path = '/' + new_path_split.slice(0, -1).join('/') + '/' + selected_placename + '/';
     window.location.pathname = new_path;
