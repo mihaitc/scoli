@@ -77,7 +77,7 @@ function initialize() {
       onAdd: function (map) {
           // create the control container with a particular class name
           var container = L.DomUtil.create('div', 'info-control');
-          container.innerHTML += '<b>Școlile din ' + json['place_name'] + ' după media notelor</b><br />';
+          container.innerHTML += '<b>Școlile din ' + json['place_name'] + '</b><br />';
           container.innerHTML += 'Media pe oraș: ' + json['average'] + '<br />';
           container.innerHTML += json['number_schools'] + ' școli și ' +  numberWithCommas(json['number_pupils']) + ' elevi';
 
