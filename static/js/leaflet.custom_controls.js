@@ -89,6 +89,7 @@ L.Control.SchoolTypeSelect = L.Control.extend({
       else {
         new_place_name = old_place_name;
       }
+      window.location.hash = '';
       window.location.pathname = '/' + new_path_split.slice(0, -1).join('/') + '/' + new_place_name + '/';
     }
   }
@@ -184,6 +185,7 @@ L.Control.PlacenameSelect = L.Control.extend({
       new_path_split.push('bucuresti');
     }    
     var new_path = '/' + new_path_split.slice(0, -1).join('/') + '/' + selected_placename + '/';
+    window.location.hash = '';
     window.location.pathname = new_path;
   }
 });
