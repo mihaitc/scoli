@@ -3,11 +3,12 @@ function numberWithCommas(x) {
 }
 
 function add_css(filename){
+  var base_static = 'https://mihaitc.github.io/scoli/static/';
   var head  = document.getElementsByTagName('head')[0];
   var link  = document.createElement('link');
   link.rel  = 'stylesheet';
   link.type = 'text/css';
-  link.href = './static/css/' + filename;
+  link.href = base_static + 'css/' + filename;
   link.media = 'all';
   head.appendChild(link);  
 }
