@@ -110,6 +110,14 @@ function initialize() {
     school_type_selector.on('change', function(e){}); 
   }  
 
+  if(json['bounds']['res_longitude_sw'] !== null && json['bounds']['res_longitude_ne'] !== null){
+    var hash_values = read_hash();
+    if(!hash_values.hasOwnProperty('lt') || (hash_values.hasOwnProperty('lt') && isNaN(hash_values.lt))){    
+      map_bounds = L.latLngBounds([json['bounds']['res_latitude_sw'], json['bounds']['res_longitude_sw']],
+                                  [json['bounds']['res_latitude_ne'], json['bounds']['res_longitude_ne']]);
+      map.fitBounds(map_bounds);
+    }
+  }
   var schools = json['schools'];
   for(var i=0; i < schools.length; i++){
     if(schools[i].ba){
@@ -132,15 +140,7 @@ function initialize() {
     else {
       L.circleMarker(L.latLng(schools[i].lt, schools[i].lg), marker_options).bindPopup(text).addTo(group_data.above_average_grades);
     }
-  };  
-  if(json['bounds']['res_longitude_sw'] !== null && json['bounds']['res_longitude_ne'] !== null){
-    var hash_values = read_hash();
-    if(!hash_values.hasOwnProperty('lt') || (hash_values.hasOwnProperty('lt') && isNaN(hash_values.lt))){    
-      map_bounds = L.latLngBounds([json['bounds']['res_latitude_sw'], json['bounds']['res_longitude_sw']],
-                                  [json['bounds']['res_latitude_ne'], json['bounds']['res_longitude_ne']]);
-      map.fitBounds(map_bounds);
-    }
-  }  
+  };   
   map.on('load moveend', function(event){
     map_move_end(map);
   });  
