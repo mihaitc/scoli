@@ -2,6 +2,20 @@ function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+function add_css(filename){
+  var head  = document.getElementsByTagName('head')[0];
+  var link  = document.createElement('link');
+  link.rel  = 'stylesheet';
+  link.type = 'text/css';
+  link.href = './static/css/' + filename;
+  link.media = 'all';
+  head.appendChild(link);  
+}
+
+add_css('leaflet.css');
+add_css('scoli.css');
+add_css('bootstrap.min.css');
+
 function initialize() {
   var hash_values = read_hash();
   if(hash_values.hasOwnProperty('lt') && !isNaN(hash_values.lt)){
