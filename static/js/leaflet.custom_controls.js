@@ -147,16 +147,16 @@ L.Control.PlacenameSelect = L.Control.extend({
    this.select.onmousedown = L.DomEvent.stopPropagation;
    var content = '';
    content += '<option value="romania">România</option>';
-   content += '<optgroup label="Orașe">';
-   for(var i=0; i< cities.length; i++){
-     content += '<option value="' + cities[i]['slug'] + '" ' + placename_dict[cities[i]['slug']] + '>' + cities[i]['place_name'] + '</option>';
-   }
-   content += '</optgroup>';
    content += '<optgroup label="Județe">';
    for(var i=0; i< counties.length; i++){
      content += '<option value="' + counties[i]['slug'] + '" ' + placename_dict[counties[i]['slug']] + '>' + counties[i]['place_name'] + '</option>';
    }
-   content += '</optgroup>';   
+   content += '</optgroup>';
+   content += '<optgroup label="Orașe">';
+   for(var i=0; i< cities.length; i++){
+     content += '<option value="' + cities[i]['slug'] + '" ' + placename_dict[cities[i]['slug']] + '>' + cities[i]['place_name'] + '</option>';
+   }
+   content += '</optgroup>';  
    this.select.innerHTML = content;
 
    return this.div;
