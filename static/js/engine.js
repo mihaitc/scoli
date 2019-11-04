@@ -131,6 +131,8 @@ function initialize() {
       map_bounds = L.latLngBounds([json['bounds']['res_latitude_sw'], json['bounds']['res_longitude_sw']],
                                   [json['bounds']['res_latitude_ne'], json['bounds']['res_longitude_ne']]);
       map.fitBounds(map_bounds);
+      var temp_zoom = map.getZoom();
+      map.setZoom(temp_zoom);      
     }
   }
   var schools = json['schools'];
