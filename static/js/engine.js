@@ -66,6 +66,16 @@ function initialize() {
       zoom: map_zoom,
       layers: [streets, selected_grades]
   });
+  if(json['bounds']['res_longitude_sw'] !== null && json['bounds']['res_longitude_ne'] !== null){
+    var hash_values = read_hash();
+    if(!hash_values.hasOwnProperty('lt') || (hash_values.hasOwnProperty('lt') && isNaN(hash_values.lt))){    
+      map_bounds = L.latLngBounds([json['bounds']['res_latitude_sw'], json['bounds']['res_longitude_sw']],
+                                  [json['bounds']['res_latitude_ne'], json['bounds']['res_longitude_ne']]);
+      map.fitBounds(map_bounds);
+      var temp_zoom = map.getZoom();
+      map.setZoom(temp_zoom);      
+    }
+  }  
   
   map.on('overlayadd', function(e) {
     if(e.name == 'Sub Medie'){
@@ -125,16 +135,6 @@ function initialize() {
     school_type_selector.on('change', function(e){}); 
   }  
 
-  if(json['bounds']['res_longitude_sw'] !== null && json['bounds']['res_longitude_ne'] !== null){
-    var hash_values = read_hash();
-    if(!hash_values.hasOwnProperty('lt') || (hash_values.hasOwnProperty('lt') && isNaN(hash_values.lt))){    
-      map_bounds = L.latLngBounds([json['bounds']['res_latitude_sw'], json['bounds']['res_longitude_sw']],
-                                  [json['bounds']['res_latitude_ne'], json['bounds']['res_longitude_ne']]);
-      map.fitBounds(map_bounds);
-      var temp_zoom = map.getZoom();
-      map.setZoom(temp_zoom);      
-    }
-  }
   var schools = json['schools'];
   for(var i=0; i < schools.length; i++){
     if(schools[i].ba){
