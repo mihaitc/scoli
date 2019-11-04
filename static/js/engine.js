@@ -47,9 +47,9 @@ function initialize() {
       app_code: 'eWDxP5uk72zORpQjf8GANw'
   });
   var group_data = {
-    all_grades: new L.LayerGroup(),
-    above_average_grades: new L.LayerGroup(),
-    below_average_grades: new L.LayerGroup(),
+    all_grades: new L.FeatureGroup(),
+    above_average_grades: new L.FeatureGroup(),
+    below_average_grades: new L.FeatureGroup(),
   };
   var selected_grades = group_data.all_grades; 
   if(hash_values.hasOwnProperty('av')){
@@ -66,16 +66,16 @@ function initialize() {
       zoom: map_zoom,
       layers: [streets, selected_grades]
   });
-  if(json['bounds']['res_longitude_sw'] !== null && json['bounds']['res_longitude_ne'] !== null){
-    var hash_values = read_hash();
-    if(!hash_values.hasOwnProperty('lt') || (hash_values.hasOwnProperty('lt') && isNaN(hash_values.lt))){    
-      map_bounds = L.latLngBounds([json['bounds']['res_latitude_sw'], json['bounds']['res_longitude_sw']],
-                                  [json['bounds']['res_latitude_ne'], json['bounds']['res_longitude_ne']]);
-      map.fitBounds(map_bounds);
-      var temp_zoom = map.getZoom();
-      map.setZoom(temp_zoom);      
-    }
-  }  
+  // if(json['bounds']['res_longitude_sw'] !== null && json['bounds']['res_longitude_ne'] !== null){
+  //   var hash_values = read_hash();
+  //   if(!hash_values.hasOwnProperty('lt') || (hash_values.hasOwnProperty('lt') && isNaN(hash_values.lt))){    
+  //     map_bounds = L.latLngBounds([json['bounds']['res_latitude_sw'], json['bounds']['res_longitude_sw']],
+  //                                 [json['bounds']['res_latitude_ne'], json['bounds']['res_longitude_ne']]);
+  //     map.fitBounds(map_bounds);
+  //     var temp_zoom = map.getZoom();
+  //     map.setZoom(temp_zoom);      
+  //   }
+  // }  
   
   map.on('overlayadd', function(e) {
     if(e.name == 'Sub Medie'){
@@ -158,6 +158,12 @@ function initialize() {
       L.circleMarker(L.latLng(schools[i].lt, schools[i].lg), marker_options).bindPopup(text).addTo(group_data.above_average_grades);
     }
   };   
+  if(json['bounds']['res_longitude_sw'] !== null && json['bounds']['res_longitude_ne'] !== null){
+    var hash_values = read_hash();
+    if(!hash_values.hasOwnProperty('lt') || (hash_values.hasOwnProperty('lt') && isNaN(hash_values.lt))){    
+      map.fitBounds(group_data.all_grades.getBounds());
+    }
+  }  
   map.on('load moveend', function(event){
     map_move_end(map);
   });  
