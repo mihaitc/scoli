@@ -50,3 +50,11 @@ function update_avg(value){
   }  
   location.hash = array_hash.join('&');
 }
+
+function intersect(first_array, second_array){
+  return first_array.filter(value => -1 !== second_array.indexOf(value));
+}
+
+function substract(first_array, second_array){
+  return first_array.filter(value => -1 === second_array.indexOf(value));
+}
