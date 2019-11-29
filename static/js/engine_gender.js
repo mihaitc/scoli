@@ -173,7 +173,7 @@ function initialize() {
     }
     text += ': ' + schools[i].agm + '</span>';
     text += "<br />Diferență: <span style=\"color:" + diff_color + "\">" + schools[i].df + "</span>";
-    text += "<br/ >Numar elevi: " + schools[i].n;
+    text += "<br/ >Număr elevi: " + schools[i].n;
     text += " (<span style=\"color:" + no_color + ";\">f: " + schools[i].nf + "</span>, <span style=\"color:" + no_color + ";\">b: " + schools[i].nm + "</span>)";
     marker.bindPopup(text).addTo(group_data.all_grades);
     if(schools[i].ba){
