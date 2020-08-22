@@ -125,6 +125,10 @@ function initialize() {
     school_type_selector.on('change', function(e){}); 
   }  
 
+  var year_selector = L.control.yearSelect({position: 'bottomright'});
+  year_selector.addTo(map);  
+  year_selector.on('change', function(e){});
+
   var schools = json['schools'];
   for(var i=0; i < schools.length; i++){
     if(schools[i].ba){
