@@ -267,14 +267,3 @@ L.Control.YearSelect = L.Control.extend({
 L.control.yearSelect = function(opts) {
  return new L.Control.YearSelect(opts);
 };
-
-function is_valid_year(path_item){
-  var allowed_years = ['2019', '2020'];
-  var return_value = false;
-  if(path_item && path_item.length==4 && !isNaN(path_item)){
-    if(allowed_years.includes(path_item)){
-      return_value = true;
-    }
-  }  
-  return return_value;
-}

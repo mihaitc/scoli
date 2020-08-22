@@ -36,7 +36,8 @@ function initialize() {
   }  
   else{
     var map_zoom = json['pn_geo']['z'];
-  }  
+  } 
+  var year = get_year_from_path(); 
   
  	var streets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWloYWl0YyIsImEiOiJQdlZ3Vk1jIn0.tifaZEFZJjYcbkOBRooqGw', {
 		maxZoom: 18,
@@ -92,7 +93,7 @@ function initialize() {
       onAdd: function (map) {
           // create the control container with a particular class name
           var container = L.DomUtil.create('div', 'info-control');
-          container.innerHTML += '<b>Școlile din ' + json['place_name'] + '</b><br />';
+          container.innerHTML += '<b>Școlile din ' + json['place_name'] + ' (' + year + ')</b><br />';
           container.innerHTML += 'Media pe ' + json['place_type'] + ': ' + json['average'] + '<br />';
           container.innerHTML += json['number_schools'] + ' școli și ' +  numberWithCommas(json['number_pupils']) + ' elevi';
 
@@ -124,7 +125,6 @@ function initialize() {
     school_type_selector.addTo(map);  
     school_type_selector.on('change', function(e){}); 
   }  
-
   var year_selector = L.control.yearSelect({position: 'bottomright'});
   year_selector.addTo(map);  
   year_selector.on('change', function(e){});

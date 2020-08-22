@@ -58,3 +58,25 @@ function intersect(first_array, second_array){
 function substract(first_array, second_array){
   return first_array.filter(value => -1 === second_array.indexOf(value));
 }
+
+function is_valid_year(path_item){
+  var allowed_years = ['2019', '2020'];
+  var return_value = false;
+  if(path_item && path_item.length==4 && !isNaN(path_item)){
+    if(allowed_years.includes(path_item)){
+      return_value = true;
+    }
+  }  
+  return return_value;
+}
+
+function get_year_from_path(){
+  var return_value = '2020';
+  var path_split = window.location.pathname.split('/')
+  for(var i=0; i < path_split.length; i++){
+    if(is_valid_year(path_split[i])){
+      return_value = path_split[i];
+    }
+  };  
+  return return_value;
+}
