@@ -39,9 +39,10 @@ function initialize() {
   } 
   var year = get_year_from_path(); 
   
- 	var streets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWloYWl0YyIsImEiOiJQdlZ3Vk1jIn0.tifaZEFZJjYcbkOBRooqGw', {
+ 	// var streets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWloYWl0YyIsImEiOiJQdlZ3Vk1jIn0.tifaZEFZJjYcbkOBRooqGw', {
+ 	var streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{id}-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWloYWl0YyIsImEiOiJQdlZ3Vk1jIn0.tifaZEFZJjYcbkOBRooqGw', {    
 		maxZoom: 18,
-		id: 'mapbox.streets'
+		id: 'streets'
 	});
 	var here_hybrid = L.tileLayer.provider('HERE.hybridDay', {
       app_id: 'e8cITM4ZmLZY5vCISfGG',
