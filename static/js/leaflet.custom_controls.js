@@ -196,8 +196,8 @@ L.control.placenameSelect = function(opts) {
 
 L.Control.YearSelect = L.Control.extend({
  onAdd: function(map) {
-   var year = '2020';
-   var allowed_years = ['2019', '2020'];
+   var year = '2021';
+   var allowed_years = ['2019', '2020', '2021'];
    var path_split = window.location.pathname.split('/');
    for(var i=0; i < path_split.length; i++){
      if(path_split[i] && path_split[i].length==4 && !isNaN(path_split[i])){
@@ -223,6 +223,7 @@ L.Control.YearSelect = L.Control.extend({
    var content = '';
    content += '<option value="2019" ' +  year_dict['2019'] + '>2019</option>';
    content += '<option value="2020" ' + year_dict['2020'] + '>2020</option>';   
+   content += '<option value="2021" ' + year_dict['2021'] + '>2021</option>';   
    this.select.innerHTML = content;
 
    return this.div;
@@ -239,7 +240,7 @@ L.Control.YearSelect = L.Control.extend({
     }
   },
   _onChange: function(e) {
-    var latest_year = '2020';
+    var latest_year = '2021';
     var selected_year = this.select.options[this.select.selectedIndex].value;
     var new_path_split = new Array();
     var year_path_list = new Array();

@@ -60,7 +60,7 @@ function substract(first_array, second_array){
 }
 
 function is_valid_year(path_item){
-  var allowed_years = ['2019', '2020'];
+  var allowed_years = ['2019', '2020', '2021'];
   var return_value = false;
   if(path_item && path_item.length==4 && !isNaN(path_item)){
     if(allowed_years.includes(path_item)){
@@ -71,7 +71,7 @@ function is_valid_year(path_item){
 }
 
 function get_year_from_path(){
-  var return_value = '2020';
+  var return_value = '2021';
   var path_split = window.location.pathname.split('/')
   for(var i=0; i < path_split.length; i++){
     if(is_valid_year(path_split[i])){
