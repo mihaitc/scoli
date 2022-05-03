@@ -1,6 +1,6 @@
-# Școli din România - Rezultate examen evaluare națională 2019
+# Școli din România - Rezultate examen evaluare națională 2019-2021
 
-Acesta este un proiect care pune pe hartă rezultatele examenului de evaluare naționala 2019. Harta cu rezultatele pe școli poate fi accesată aici: [https://mihaitc.github.io/scoli/](https://mihaitc.github.io/scoli/). 
+Acesta este un proiect care pune pe hartă rezultatele examenului de evaluare naționala pentru anii 2019, 2020 și 2021. Harta cu rezultatele pe școli poate fi accesată aici: [https://mihaitc.github.io/scoli/](https://mihaitc.github.io/scoli/). 
 
 # Metodologie
 
