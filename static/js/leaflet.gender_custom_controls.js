@@ -284,3 +284,79 @@ L.Control.ClassSelect = L.Control.extend({
 L.control.classSelect = function(opts) {
  return new L.Control.ClassSelect(opts);
 };
+
+L.Control.YearSelect = L.Control.extend({
+ onAdd: function(map) {
+   var year = '2021';
+   // var allowed_years = ['2019', '2020', '2021'];
+   var allowed_years = ['2019', '2021'];   
+   var path_split = window.location.pathname.split('/');
+   for(var i=0; i < path_split.length; i++){
+     if(path_split[i] && path_split[i].length==4 && !isNaN(path_split[i])){
+       if(allowed_years.includes(path_split[i])){
+         year = path_split[i];
+         break;
+       }
+     }
+   };
+   var year_dict = {};   
+   for(var i=0; i < allowed_years.length; i++){
+     if(allowed_years[i] == year){
+       year_dict[allowed_years[i]] = 'selected="SELECTED"';
+     }
+     else {
+       year_dict[allowed_years[i]] = '';
+     }
+   }
+
+   this.div = L.DomUtil.create('div','leaflet-yearselect-container');
+   this.select = L.DomUtil.create('select','leaflet-yearselect',this.div);
+   this.select.onmousedown = L.DomEvent.stopPropagation;
+   var content = '';
+   content += '<option value="2019" ' +  year_dict['2019'] + '>2019</option>';
+   // content += '<option value="2020" ' + year_dict['2020'] + '>2020</option>';   
+   content += '<option value="2021" ' + year_dict['2021'] + '>2021</option>';   
+   this.select.innerHTML = content;
+
+   return this.div;
+ },
+  on: function(type,handler){
+    if (type == 'change'){
+      this.onChange = handler;
+      L.DomEvent.addListener(this.select,'change',this._onChange,this);
+    } else if (type == 'click'){ //don't need this here probably, but for convenience?
+      this.onClick = handler;
+      L.DomEvent.addListener(this.select,'click',this.onClick,this);
+    } else {
+      console.log('Year - cannot handle '+type+' events.')
+    }
+  },
+  _onChange: function(e) {
+    var latest_year = '2021';
+    var selected_year = this.select.options[this.select.selectedIndex].value;
+    var new_path_split = new Array();
+    var year_path_list = new Array();
+    var path_split = window.location.pathname.split('/')
+    for(var i=0; i < path_split.length; i++){
+      if(path_split[i] && !is_valid_year(path_split[i])){
+        new_path_split.push(path_split[i]);
+      }
+    };
+    if(new_path_split.length == 2){
+      new_path_split.push('bucuresti');
+    }    
+    if(selected_year == latest_year){
+      year_path_list = new_path_split;
+    }
+    else {
+      year_path_list = year_path_list.concat(new_path_split.slice(0, 2), [selected_year], new_path_split.slice(2));
+    }
+    var new_path = year_path_list.join('/') + '/';
+    window.location.hash = '';
+    window.location.pathname = new_path;
+  }
+});
+
+L.control.yearSelect = function(opts) {
+ return new L.Control.YearSelect(opts);
+};
