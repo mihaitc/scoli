@@ -288,7 +288,7 @@ L.control.classSelect = function(opts) {
 L.Control.YearSelect = L.Control.extend({
  onAdd: function(map) {
    var year = '2021';
-   var allowed_years = ['2018', '2019', '2020', '2021'];
+   var allowed_years = ['2017', '2018', '2019', '2020', '2021'];
    var path_split = window.location.pathname.split('/');
    for(var i=0; i < path_split.length; i++){
      if(path_split[i] && path_split[i].length==4 && !isNaN(path_split[i])){
@@ -312,6 +312,7 @@ L.Control.YearSelect = L.Control.extend({
    this.select = L.DomUtil.create('select','leaflet-yearselect',this.div);
    this.select.onmousedown = L.DomEvent.stopPropagation;
    var content = '';
+   content += '<option value="2017" ' +  year_dict['2017'] + '>2017</option>';
    content += '<option value="2018" ' +  year_dict['2018'] + '>2018</option>';
    content += '<option value="2019" ' +  year_dict['2019'] + '>2019</option>';
    content += '<option value="2020" ' + year_dict['2020'] + '>2020</option>';   
