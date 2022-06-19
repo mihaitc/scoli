@@ -59,6 +59,10 @@ function substract(first_array, second_array){
   return first_array.filter(value => -1 === second_array.indexOf(value));
 }
 
+function get_allowed_years(){
+  return ['2015', '2016', '2017', '2018', '2019', '2020', '2021'];
+}
+
 function is_valid_year(path_item){
   var allowed_years = ['2016', '2017', '2018', '2019', '2020', '2021'];
   var return_value = false;
