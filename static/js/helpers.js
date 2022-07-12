@@ -64,7 +64,7 @@ function get_allowed_years(){
 }
 
 function is_valid_year(path_item){
-  var allowed_years = ['2016', '2017', '2018', '2019', '2020', '2021'];
+  var allowed_years = get_allowed_years();
   var return_value = false;
   if(path_item && path_item.length==4 && !isNaN(path_item)){
     if(allowed_years.includes(path_item)){
