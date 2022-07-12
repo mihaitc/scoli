@@ -1,6 +1,6 @@
-# Școli din România - Rezultate examen evaluare națională 2015-2021
+# Școli din România - Rezultate examen evaluare națională 2014-2021
 
-Acesta este un proiect care pune pe hartă rezultatele examenului de evaluare naționala pentru anii 2015, 2016, 2017, 2018, 2019, 2020 și 2021. Harta cu rezultatele pe școli poate fi accesată aici: [https://mihaitc.github.io/scoli/](https://mihaitc.github.io/scoli/). 
+Acesta este un proiect care pune pe hartă rezultatele examenului de evaluare naționala pentru anii 2014-2021. Harta cu rezultatele pe școli poate fi accesată aici: [https://mihaitc.github.io/scoli/](https://mihaitc.github.io/scoli/). 
 
 # Metodologie
 
