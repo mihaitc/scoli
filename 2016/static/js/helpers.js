@@ -59,8 +59,16 @@ function substract(first_array, second_array){
   return first_array.filter(value => -1 === second_array.indexOf(value));
 }
 
+function get_allowed_years(){
+  return ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'];
+}
+
+function get_gender_allowed_years(){
+  return ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021'];
+}
+
 function is_valid_year(path_item){
-  var allowed_years = ['2018', '2019', '2020', '2021'];
+  var allowed_years = get_allowed_years();
   var return_value = false;
   if(path_item && path_item.length==4 && !isNaN(path_item)){
     if(allowed_years.includes(path_item)){
@@ -71,7 +79,7 @@ function is_valid_year(path_item){
 }
 
 function get_year_from_path(){
-  var return_value = '2021';
+  var return_value = '2022';
   var path_split = window.location.pathname.split('/')
   for(var i=0; i < path_split.length; i++){
     if(is_valid_year(path_split[i])){
