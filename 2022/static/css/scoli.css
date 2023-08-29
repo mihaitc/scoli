@@ -1,0 +1,11 @@
+#map {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+.info-control {
+  background: white;
+  padding: 0.3em;
+}
