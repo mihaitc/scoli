@@ -60,7 +60,7 @@ function substract(first_array, second_array){
 }
 
 function get_allowed_years(){
-  return ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'];
+  return ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
 }
 
 function get_gender_allowed_years(){
@@ -79,7 +79,7 @@ function is_valid_year(path_item){
 }
 
 function get_year_from_path(){
-  var return_value = '2022';
+  var return_value = '2023';
   var path_split = window.location.pathname.split('/')
   for(var i=0; i < path_split.length; i++){
     if(is_valid_year(path_split[i])){
