@@ -64,7 +64,7 @@ function get_allowed_years(){
 }
 
 function get_gender_allowed_years(){
-  return ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2023'];
+  return ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
 }
 
 function is_valid_year(path_item){
