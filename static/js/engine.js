@@ -42,11 +42,7 @@ function initialize() {
  	var streets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
 		maxZoom: 18,
 		id: 'streets'
-	});  
-  // var here_hybrid = L.tileLayer.provider('HERE.hybridDay', {
-  //       app_id: 'e8cITM4ZmLZY5vCISfGG',
-  //       app_code: 'eWDxP5uk72zORpQjf8GANw'
-  //   });
+	});
   var here_hybrid = new L.BingLayer('Ar0tMAdjCJJnyTbjguVJCUF98jeqImVNTUi99o8GzG0fDmcUvzffAnTNwFI_PMCO', {
           type: 'AerialWithLabels'
       });    
