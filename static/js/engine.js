@@ -43,9 +43,13 @@ function initialize() {
 		maxZoom: 18,
 		id: 'streets'
 	});
-  var here_hybrid = new L.BingLayer('Ar0tMAdjCJJnyTbjguVJCUF98jeqImVNTUi99o8GzG0fDmcUvzffAnTNwFI_PMCO', {
-          type: 'AerialWithLabels'
-      });    
+  var here_hybrid = L.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.png?key=hkaDaUlIs4llswXSkpD7',{ //style URL
+          tileSize: 512,
+          zoomOffset: -1,
+          minZoom: 1,
+          attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+          crossOrigin: true
+        })     
   var group_data = {
     all_grades: new L.FeatureGroup(),
     above_average_grades: new L.FeatureGroup(),
