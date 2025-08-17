@@ -42,15 +42,17 @@ function initialize() {
     var map_zoom = json['pn_geo']['z'];
   }
   
-  // var streets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWloYWl0YyIsImEiOiJQdlZ3Vk1jIn0.tifaZEFZJjYcbkOBRooqGw', {
-  var streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{id}-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWloYWl0YyIsImEiOiJQdlZ3Vk1jIn0.tifaZEFZJjYcbkOBRooqGw', {
+ 	var streets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
 		maxZoom: 18,
 		id: 'streets'
 	});
-	var here_hybrid = L.tileLayer.provider('HERE.hybridDay', {
-      app_id: 'e8cITM4ZmLZY5vCISfGG',
-      app_code: 'eWDxP5uk72zORpQjf8GANw'
-  });
+  var here_hybrid = L.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.png?key=hkaDaUlIs4llswXSkpD7',{ //style URL
+          tileSize: 512,
+          zoomOffset: -1,
+          minZoom: 1,
+          attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+          crossOrigin: true
+        })
   var group_data = {
     all_grades: new L.FeatureGroup(),
     female_grades: new L.FeatureGroup(),
