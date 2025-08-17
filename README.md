@@ -1,6 +1,6 @@
-# Școli din România - Rezultate examen evaluare națională 2014-2024
+# Școli din România - Rezultate examen evaluare națională 2014-2025
 
-Acesta este un proiect care pune pe hartă rezultatele examenului de evaluare naționala pentru anii 2014-2024. Harta cu rezultatele pe școli poate fi accesată aici: [https://mihaitc.github.io/scoli/](https://mihaitc.github.io/scoli/). 
+Acesta este un proiect care pune pe hartă rezultatele examenului de evaluare naționala pentru anii 2014-2025. Harta cu rezultatele pe școli poate fi accesată aici: [https://mihaitc.github.io/scoli/](https://mihaitc.github.io/scoli/). 
 
 # Metodologie
 
